@@ -10,6 +10,7 @@ check_installed() {
     fi
 }
 
+# Check for valid input
 if [ "$#" -ne 1 ]; then
     echo "Missing IDE Code argument in position 1. Use one of: IU, RM, PY, PS, WS, RD, GO"
     echo "Usage: $0 IDE_CODE"
