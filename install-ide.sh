@@ -10,6 +10,12 @@ check_installed() {
     fi
 }
 
+if [ "$#" -ne 1 ]; then
+    echo "Missing IDE Code argument in position 1. Use one of: IU, RM, PY, PS, WS, RD, GO"
+    echo "Usage: $0 IDE_CODE"
+    exit 1
+fi
+
 # Check for required tools
 check_installed curl
 check_installed tar
@@ -22,7 +28,7 @@ DOWNLOAD_LINK=$(curl -s 'https://vsoprodrelusejbuse.blob.core.windows.net/ide-ca
 COMPRESSED_NAME=$(echo $DOWNLOAD_LINK | rev | cut -d '/' -f 1 | rev)
 
 # Prepare the installation destination
-IDE_INSTALL_DIR=/.codespaces/shared/editors/jetbrains
+IDE_INSTALL_DIR=/opt/jetbrains
 COMPRESSED_FILE_PATH=$IDE_INSTALL_DIR/$COMPRESSED_NAME
 
 echo "Ensuring install location exists"
