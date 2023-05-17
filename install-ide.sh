@@ -11,7 +11,7 @@ check_installed() {
 }
 
 # Check for valid input
-if [ "$#" -ne 1 ]; then
+if [ "$#" -lt 1 ]; then
     echo "Missing IDE Code argument in position 1. Use one of: IU, RM, PY, PS, WS, RD, GO"
     echo "Usage: $0 IDE_CODE"
     exit 1
@@ -29,7 +29,7 @@ DOWNLOAD_LINK=$(curl -s 'https://vsoprodrelusejbuse.blob.core.windows.net/ide-ca
 COMPRESSED_NAME=$(echo $DOWNLOAD_LINK | rev | cut -d '/' -f 1 | rev)
 
 # Prepare the installation destination
-IDE_INSTALL_DIR=/opt/jetbrains
+IDE_INSTALL_DIR=${2:-/opt/jetbrains}
 COMPRESSED_FILE_PATH=$IDE_INSTALL_DIR/$COMPRESSED_NAME
 
 echo "Ensuring install location exists"
