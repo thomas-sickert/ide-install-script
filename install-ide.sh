@@ -1,25 +1,11 @@
 #!/bin/sh
 
-# Helper function to check if a required tool is installed. Exists if the command fails.
-check_installed() {
-    echo "Checking for '$1'"
-    if ! command -v $1 &> /dev/null
-    then
-        echo "$1 could not be found"
-        exit
-    fi
-}
-
 # Check for valid input
 if [ "$#" -lt 1 ]; then
     echo "Missing IDE Code argument in position 1. Use one of: IU, RM, PY, PS, WS, RD, GO"
     echo "Usage: $0 IDE_CODE"
     exit 1
 fi
-
-# Check for required tools
-check_installed curl
-check_installed tar
 
 # Pull the manifest
 echo "Fetching the IDE download link from the JetBrains IDE manifest"
