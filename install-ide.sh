@@ -27,7 +27,7 @@ curl "$DOWNLOAD_LINK" --output "$COMPRESSED_FILE_PATH" || exit
 
 # Extract the IDE from the compressed artifact
 echo "Extracting $COMPRESSED_NAME"
-tar -xvzf "$COMPRESSED_FILE_PATH" || exit
+tar -xvzf "$COMPRESSED_FILE_PATH" -C "$IDE_INSTALL_DIR" || exit
 
 # Remove the compressed artifact after extraction
 echo "Cleaning up $COMPRESSED_NAME"
